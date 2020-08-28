@@ -1,0 +1,319 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://GUIElements/StatusContainer.gd" type="Script" id=1]
+[ext_resource path="res://GUIGraphics/Lcars_wallpaper.svg.png" type="Texture" id=2]
+[ext_resource path="res://GUIElements/LCARSProgressRed.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUIElements/LCARSProgress.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Fonts/Context_Ultra_Condensed.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://GUIGraphics/Lcars_Divider.png" type="Texture" id=6]
+[ext_resource path="res://GUIGraphics/Lcards_Divider3.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 989, 266, 211, 46 )
+
+[node name="StatusContainer" type="VBoxContainer"]
+anchor_right = 0.22
+anchor_bottom = 0.747
+margin_right = -0.279999
+margin_bottom = 72.8
+rect_min_size = Vector2( 225, 0 )
+size_flags_horizontal = 3
+theme = SubResource( 2 )
+custom_constants/separation = 8
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chronometer" type="HBoxContainer" parent="."]
+margin_right = 225.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="DayContainer" type="HBoxContainer" parent="Chronometer"]
+margin_right = 110.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+custom_constants/separation = 15
+
+[node name="DayLabel" type="Label" parent="Chronometer/DayContainer"]
+margin_right = 21.0
+margin_bottom = 21.0
+text = "DAY"
+align = 2
+
+[node name="DayAmt" type="Label" parent="Chronometer/DayContainer"]
+margin_left = 36.0
+margin_right = 43.0
+margin_bottom = 21.0
+text = "0"
+
+[node name="TimeContainer" type="HBoxContainer" parent="Chronometer"]
+margin_left = 114.0
+margin_right = 225.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+custom_constants/separation = 15
+alignment = 2
+
+[node name="TimeLabel" type="Label" parent="Chronometer/TimeContainer"]
+margin_left = 61.0
+margin_right = 89.0
+margin_bottom = 21.0
+text = "HOUR"
+
+[node name="TimeAmt" type="Label" parent="Chronometer/TimeContainer"]
+margin_left = 104.0
+margin_right = 111.0
+margin_bottom = 21.0
+text = "0"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 29.0
+margin_right = 225.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 225, 5 )
+color = Color( 0.2, 0.4, 1, 1 )
+
+[node name="Tactical" type="MarginContainer" parent="."]
+margin_top = 42.0
+margin_right = 225.0
+margin_bottom = 155.0
+
+[node name="TacticalContainer" type="HBoxContainer" parent="Tactical"]
+margin_right = 225.0
+margin_bottom = 113.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Gear" type="CenterContainer" parent="Tactical/TacticalContainer"]
+margin_right = 75.0
+margin_bottom = 113.0
+size_flags_horizontal = 3
+
+[node name="GearContainer" type="VBoxContainer" parent="Tactical/TacticalContainer/Gear"]
+margin_left = 10.0
+margin_right = 65.0
+margin_bottom = 113.0
+size_flags_horizontal = 3
+custom_constants/separation = 8
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tactical/TacticalContainer/Gear/GearContainer"]
+margin_right = 55.0
+margin_bottom = 46.0
+
+[node name="ShieldsLabel" type="Label" parent="Tactical/TacticalContainer/Gear/GearContainer/VBoxContainer"]
+margin_right = 55.0
+margin_bottom = 21.0
+text = "SHIELDS"
+
+[node name="ShieldsAmt" type="Label" parent="Tactical/TacticalContainer/Gear/GearContainer/VBoxContainer"]
+margin_top = 25.0
+margin_right = 55.0
+margin_bottom = 46.0
+text = "100"
+
+[node name="Divider" type="ColorRect" parent="Tactical/TacticalContainer/Gear/GearContainer"]
+margin_top = 54.0
+margin_right = 55.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 0, 5 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+color = Color( 0.733333, 0.266667, 0.0666667, 1 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Tactical/TacticalContainer/Gear/GearContainer"]
+margin_top = 67.0
+margin_right = 55.0
+margin_bottom = 113.0
+
+[node name="TorpedosLabel" type="Label" parent="Tactical/TacticalContainer/Gear/GearContainer/VBoxContainer2"]
+margin_right = 55.0
+margin_bottom = 21.0
+text = "TORPEDOS"
+
+[node name="TorpedosAmt" type="Label" parent="Tactical/TacticalContainer/Gear/GearContainer/VBoxContainer2"]
+margin_top = 25.0
+margin_right = 55.0
+margin_bottom = 46.0
+text = "12"
+
+[node name="LCARSDivider" type="TextureRect" parent="Tactical/TacticalContainer"]
+margin_left = 95.0
+margin_right = 129.0
+margin_bottom = 113.0
+rect_min_size = Vector2( 34, 100 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Distance" type="CenterContainer" parent="Tactical/TacticalContainer"]
+margin_left = 149.0
+margin_right = 225.0
+margin_bottom = 113.0
+size_flags_horizontal = 3
+
+[node name="DistancesContainer" type="VBoxContainer" parent="Tactical/TacticalContainer/Distance"]
+margin_left = 6.0
+margin_right = 70.0
+margin_bottom = 113.0
+size_flags_horizontal = 3
+custom_constants/separation = 8
+
+[node name="DistanceContainer" type="VBoxContainer" parent="Tactical/TacticalContainer/Distance/DistancesContainer"]
+margin_right = 64.0
+margin_bottom = 46.0
+alignment = 1
+
+[node name="DistanceLabel" type="Label" parent="Tactical/TacticalContainer/Distance/DistancesContainer/DistanceContainer"]
+margin_right = 64.0
+margin_bottom = 21.0
+text = "TRAVELLED"
+align = 2
+
+[node name="DistanceAmt" type="Label" parent="Tactical/TacticalContainer/Distance/DistancesContainer/DistanceContainer"]
+margin_top = 25.0
+margin_right = 64.0
+margin_bottom = 46.0
+text = "8008135"
+align = 2
+
+[node name="Divider" type="ColorRect" parent="Tactical/TacticalContainer/Distance/DistancesContainer"]
+margin_top = 54.0
+margin_right = 64.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 0, 5 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+color = Color( 0.8, 0.4, 0.6, 1 )
+
+[node name="DestinationContainer" type="VBoxContainer" parent="Tactical/TacticalContainer/Distance/DistancesContainer"]
+margin_top = 67.0
+margin_right = 64.0
+margin_bottom = 113.0
+alignment = 1
+
+[node name="DestintationLabel" type="Label" parent="Tactical/TacticalContainer/Distance/DistancesContainer/DestinationContainer"]
+margin_right = 64.0
+margin_bottom = 21.0
+text = "REMAINING"
+align = 2
+
+[node name="DestinationAmt" type="Label" parent="Tactical/TacticalContainer/Distance/DistancesContainer/DestinationContainer"]
+margin_top = 25.0
+margin_right = 64.0
+margin_bottom = 46.0
+text = "4206.9"
+align = 2
+
+[node name="Panel" type="Panel" parent="."]
+margin_top = 163.0
+margin_right = 225.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 180, 15 )
+custom_styles/panel = SubResource( 3 )
+
+[node name="WarpContainer" type="HBoxContainer" parent="."]
+margin_top = 186.0
+margin_right = 225.0
+margin_bottom = 363.0
+custom_constants/separation = 16
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="WarpContainer"]
+margin_right = 93.0
+margin_bottom = 177.0
+
+[node name="TextureRect" type="TextureRect" parent="WarpContainer/CenterContainer"]
+margin_right = 93.0
+margin_bottom = 177.0
+texture = ExtResource( 8 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WarpContainer"]
+margin_left = 109.0
+margin_right = 225.0
+margin_bottom = 177.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="GridContainer" parent="WarpContainer/VBoxContainer"]
+margin_right = 116.0
+margin_bottom = 103.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 2
+
+[node name="FuelLabel" type="Label" parent="WarpContainer/VBoxContainer/HBoxContainer"]
+margin_right = 49.0
+margin_bottom = 21.0
+text = "FUEL"
+
+[node name="FuelAmt" type="Label" parent="WarpContainer/VBoxContainer/HBoxContainer"]
+margin_left = 69.0
+margin_right = 109.0
+margin_bottom = 21.0
+text = "5 Tons"
+align = 2
+
+[node name="WarpSpeedLabel" type="Label" parent="WarpContainer/VBoxContainer/HBoxContainer"]
+margin_top = 41.0
+margin_right = 49.0
+margin_bottom = 62.0
+text = "WARP"
+
+[node name="WarpSpeedAmt" type="Label" parent="WarpContainer/VBoxContainer/HBoxContainer"]
+margin_left = 69.0
+margin_top = 41.0
+margin_right = 109.0
+margin_bottom = 62.0
+text = "Warp 9"
+align = 2
+
+[node name="FuelUseLabel" type="Label" parent="WarpContainer/VBoxContainer/HBoxContainer"]
+margin_top = 82.0
+margin_right = 49.0
+margin_bottom = 103.0
+text = "FUEL USE"
+align = 2
+
+[node name="FuelUseAmt" type="Label" parent="WarpContainer/VBoxContainer/HBoxContainer"]
+margin_left = 69.0
+margin_top = 82.0
+margin_right = 109.0
+margin_bottom = 103.0
+text = "25.623"
+align = 2
+
+[node name="Engineering" type="VBoxContainer" parent="WarpContainer/VBoxContainer"]
+margin_top = 107.0
+margin_right = 116.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="WarpContainer/VBoxContainer/Engineering"]
+margin_right = 116.0
+margin_bottom = 21.0
+text = "ENGINE"
+
+[node name="SpeedAmt" parent="WarpContainer/VBoxContainer/Engineering" instance=ExtResource( 4 )]
+margin_top = 25.0
+margin_right = 116.0
+margin_bottom = 35.0
+max_value = 100.0
+
+[node name="EfficiencyAmt" parent="WarpContainer/VBoxContainer/Engineering" instance=ExtResource( 3 )]
+margin_top = 39.0
+margin_right = 116.0
+margin_bottom = 49.0

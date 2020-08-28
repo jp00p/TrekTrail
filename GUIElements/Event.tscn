@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Buttons/LCARSButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUIElements/Event.gd" type="Script" id=2]
+[ext_resource path="res://EventImages/Nagilum.jpg" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_right = 20.0
+bg_color = Color( 1, 0.611765, 0, 1 )
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_right = 20.0
+bg_color = Color( 0.968627, 0.741176, 0.352941, 1 )
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_right = 20.0
+bg_color = Color( 0.466667, 0.266667, 0.4, 1 )
+corner_radius_top_left = 60
+corner_radius_bottom_left = 60
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_right = 20.0
+bg_color = Color( 0.6, 0.466667, 0.666667, 1 )
+corner_radius_top_left = 60
+corner_radius_bottom_left = 60
+corner_detail = 20
+
+[node name="Event" type="Control"]
+anchor_right = 0.312
+anchor_bottom = 0.453
+margin_right = 0.511993
+margin_bottom = 0.199982
+rect_min_size = Vector2( 320, 272 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -72.0
+margin_right = 1.0
+margin_bottom = -32.0
+grow_horizontal = 2
+rect_min_size = Vector2( 319, 0 )
+size_flags_horizontal = 4
+custom_constants/separation = 59
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Choice1" parent="HBoxContainer" instance=ExtResource( 1 )]
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+
+[node name="Choice2" parent="HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 189.0
+margin_right = 319.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+color = 2
+side = 1
+[connection signal="pressed" from="HBoxContainer/Choice1" to="." method="_on_Choice1_pressed"]
+[connection signal="pressed" from="HBoxContainer/Choice2" to="." method="_on_Choice2_pressed"]

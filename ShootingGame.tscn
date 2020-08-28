@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ShootingGame.gd" type="Script" id=1]
+[ext_resource path="res://Shaders/CRT.shader" type="Shader" id=2]
+[ext_resource path="res://Shaders/starfield.shader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/octaves = 5
+shader_param/viewport_size = Vector2( 500, 500 )
+shader_param/x_offset = 0.0
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.411043, 0.730061, 0.993865 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0.526821, 0.119629, 1, 1, 0, 0, 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 2 )
+shader_param/boost = 2.0
+shader_param/grille_opacity = 0.85
+shader_param/scanlines_opacity = 0.95
+shader_param/vignette_opacity = 0.2
+shader_param/scanlines_speed = 1.0
+shader_param/show_grille = true
+shader_param/show_scanlines = true
+shader_param/show_vignette = true
+shader_param/show_curvature = false
+shader_param/screen_size = Vector2( 320, 272 )
+shader_param/aberration_amount = 0.0
+shader_param/move_aberration = true
+shader_param/aberration_speed = 3.0
+
+[node name="ShootingGame" type="Control"]
+margin_right = 320.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 320, 272 )
+rect_clip_content = true
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enemies" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Phasers" type="Line2D" parent="."]
+use_parent_material = true
+points = PoolVector2Array( 156.2, 262.341 )
+width = 2.0
+default_color = Color( 0.956863, 0.2, 0, 1 )
+gradient = SubResource( 2 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Phasers"]
+collision_layer = 2
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="ShotTimer" type="Timer" parent="."]
+
+[node name="ShotProgress" type="ProgressBar" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+margin_bottom = -10.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScreenEffect" type="ColorRect" parent="."]
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="ShipTimer" to="." method="_on_ShipTimer_timeout"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
+[connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]

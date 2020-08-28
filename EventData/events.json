@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Ferengi!",
+    "text": "Ferengi attack! Fire torpedos to scare them off, or engage in combat?",
+    "choice_1_text": "Torpedos",
+    "choice_1_result": ["torpedos", "ferengi"],
+    "choice_1_result_text": "Result 1!",
+    "choice_2_text": "Combat",
+    "choice_2_result": ["combat", "ferengi"],
+    "choice_2_result_text": "Result 2!",
+    "graphic": "lastoutpostferengi.jpg",
+    "other_notes": ""
+  }
+]

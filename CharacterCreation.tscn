@@ -1,0 +1,174 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Captains/masks375.jpg" type="Texture" id=1]
+[ext_resource path="res://CharacterCreation.gd" type="Script" id=2]
+[ext_resource path="res://Buttons/StationPicker.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Captains/elogium136.jpg" type="Texture" id=4]
+[ext_resource path="res://Captains/atimetostand_370.jpg" type="Texture" id=5]
+
+[sub_resource type="ButtonGroup" id=1]
+resource_name = "CaptainChoice"
+
+[sub_resource type="ParticlesMaterial" id=2]
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="CharacterCreation" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 30
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 994.0
+margin_bottom = 570.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer"]
+margin_left = 207.0
+margin_top = 100.0
+margin_right = 757.0
+margin_bottom = 439.0
+custom_constants/separation = 50
+alignment = 1
+
+[node name="CaptainContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 550.0
+margin_bottom = 93.0
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CaptainContainer"]
+margin_right = 550.0
+margin_bottom = 14.0
+text = "Choose a Captain"
+align = 1
+
+[node name="CaptainButtons" type="HBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CaptainContainer"]
+margin_top = 18.0
+margin_right = 550.0
+margin_bottom = 93.0
+custom_constants/separation = 50
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CaptainContainer/CaptainButtons"]
+margin_right = 150.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 150, 75 )
+group = SubResource( 1 )
+text = "Picard"
+icon = ExtResource( 1 )
+expand_icon = true
+
+[node name="CheckBox2" type="CheckBox" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CaptainContainer/CaptainButtons"]
+margin_left = 200.0
+margin_right = 350.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 150, 75 )
+group = SubResource( 1 )
+text = "Janeway"
+icon = ExtResource( 4 )
+expand_icon = true
+
+[node name="CheckBox3" type="CheckBox" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CaptainContainer/CaptainButtons"]
+margin_left = 400.0
+margin_right = 550.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 150, 75 )
+group = SubResource( 1 )
+text = "Sisko"
+icon = ExtResource( 5 )
+expand_icon = true
+
+[node name="CrewContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
+margin_left = 69.0
+margin_top = 143.0
+margin_right = 480.0
+margin_bottom = 269.0
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer"]
+margin_right = 411.0
+margin_bottom = 14.0
+text = "Choose Crew"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer"]
+margin_top = 18.0
+margin_right = 411.0
+margin_bottom = 126.0
+alignment = 1
+
+[node name="CrewNamesContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer/HBoxContainer"]
+margin_right = 300.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 300, 108 )
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer/HBoxContainer/CrewNamesContainer"]
+margin_right = 300.0
+margin_bottom = 24.0
+text = "Crew Member Name"
+max_length = 64
+
+[node name="LineEdit2" type="LineEdit" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer/HBoxContainer/CrewNamesContainer"]
+margin_top = 28.0
+margin_right = 300.0
+margin_bottom = 52.0
+text = "Crew Member Name"
+max_length = 64
+
+[node name="LineEdit3" type="LineEdit" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer/HBoxContainer/CrewNamesContainer"]
+margin_top = 56.0
+margin_right = 300.0
+margin_bottom = 80.0
+text = "Crew Member Name"
+max_length = 64
+
+[node name="LineEdit4" type="LineEdit" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer/HBoxContainer/CrewNamesContainer"]
+margin_top = 84.0
+margin_right = 300.0
+margin_bottom = 108.0
+text = "Crew Member Name"
+max_length = 64
+
+[node name="CrewStations" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer/HBoxContainer"]
+margin_left = 304.0
+margin_right = 411.0
+margin_bottom = 108.0
+custom_constants/separation = 9
+
+[node name="StationPicker" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer/HBoxContainer/CrewStations" instance=ExtResource( 3 )]
+
+[node name="StationPicker2" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer/HBoxContainer/CrewStations" instance=ExtResource( 3 )]
+margin_top = 29.0
+margin_bottom = 49.0
+
+[node name="StationPicker3" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer/HBoxContainer/CrewStations" instance=ExtResource( 3 )]
+margin_top = 58.0
+margin_bottom = 78.0
+
+[node name="StationPicker4" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/CrewContainer/HBoxContainer/CrewStations" instance=ExtResource( 3 )]
+margin_top = 87.0
+margin_bottom = 107.0
+
+[node name="Submit" type="Button" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 319.0
+margin_right = 550.0
+margin_bottom = 339.0
+text = "Engage!"
+
+[node name="Particles2D" type="Particles2D" parent="."]
+process_material = SubResource( 2 )
+[connection signal="pressed" from="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/Submit" to="." method="_on_Submit_pressed"]

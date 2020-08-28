@@ -1,0 +1,134 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://GUIElements/ViewScreenContainer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://GUIElements/RedAlertIndicator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUIElements/StatusContainer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUIElements/ControlsContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fonts/Trek_TNG_Monitors.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://GUIElements/RedAlertIndicatorRight.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI"]
+anchor_top = -0.00157313
+anchor_right = 1.0
+anchor_bottom = 0.998427
+margin_top = 0.943878
+margin_bottom = 48.9438
+theme = SubResource( 2 )
+custom_constants/margin_top = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/MarginContainer"]
+margin_top = 15.0
+margin_right = 1024.0
+margin_bottom = 648.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/MarginContainer/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 540.0
+custom_constants/separation = 20
+
+[node name="RedAlertIndicatorLeft" parent="GUI/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+
+[node name="ViewScreenContainer" parent="GUI/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_right = 550.0
+margin_bottom = 540.0
+
+[node name="StatusContainer" parent="GUI/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 570.0
+margin_right = 804.0
+margin_bottom = 540.0
+
+[node name="ControlsContainer" parent="GUI/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
+margin_left = 824.0
+margin_right = 954.0
+
+[node name="RedAlertIndicatorRight" parent="GUI/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 7 )]
+margin_left = 974.0
+margin_right = 1024.0
+
+[node name="CenterContainer" type="CenterContainer" parent="GUI/MarginContainer/VBoxContainer"]
+margin_top = 544.0
+margin_right = 1024.0
+margin_bottom = 544.0
+
+[node name="CrewContainer" type="HBoxContainer" parent="GUI/MarginContainer/VBoxContainer/CenterContainer"]
+visible = false
+margin_left = 466.0
+margin_top = -22.0
+margin_right = 558.0
+margin_bottom = 22.0
+
+[node name="CrewCard" type="HBoxContainer" parent="GUI/MarginContainer/VBoxContainer/CenterContainer/CrewContainer"]
+margin_right = 92.0
+margin_bottom = 44.0
+
+[node name="StationColor" type="ColorRect" parent="GUI/MarginContainer/VBoxContainer/CenterContainer/CrewContainer/CrewCard"]
+margin_right = 25.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 25, 25 )
+color = Color( 0.882353, 0.764706, 0.207843, 1 )
+
+[node name="CrewDetails" type="VBoxContainer" parent="GUI/MarginContainer/VBoxContainer/CenterContainer/CrewContainer/CrewCard"]
+margin_left = 29.0
+margin_right = 92.0
+margin_bottom = 44.0
+
+[node name="CrewName" type="Label" parent="GUI/MarginContainer/VBoxContainer/CenterContainer/CrewContainer/CrewCard/CrewDetails"]
+margin_right = 63.0
+margin_bottom = 20.0
+text = "Tasha Yarr"
+
+[node name="CrewHealth" type="Label" parent="GUI/MarginContainer/VBoxContainer/CenterContainer/CrewContainer/CrewCard/CrewDetails"]
+margin_top = 24.0
+margin_right = 63.0
+margin_bottom = 44.0
+text = "Healthy"
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="EventTimer" type="Timer" parent="."]
+wait_time = 6.0
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="alert" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ViewScreenContainer" to="." method="_on_ViewScreenContainer_alert"]
+[connection signal="explore" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ControlsContainer" to="." method="_on_ControlsContainer_explore"]
+[connection signal="go" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ControlsContainer" to="." method="_on_ControlsContainer_go"]
+[connection signal="rations" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ControlsContainer" to="." method="_on_ControlsContainer_rations"]
+[connection signal="repair" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ControlsContainer" to="." method="_on_ControlsContainer_repair"]
+[connection signal="set_speed" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ControlsContainer" to="." method="_on_ControlsContainer_set_speed"]
+[connection signal="sickbay" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ControlsContainer" to="." method="_on_ControlsContainer_sickbay"]
+[connection signal="stop" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ControlsContainer" to="." method="_on_ControlsContainer_stop"]
+[connection signal="timeout" from="MoveTimer" to="." method="timer_tick"]

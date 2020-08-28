@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GUIGraphics/Progress.png" type="Texture" id=1]
+[ext_resource path="res://GUIElements/LCARSProgress.gd" type="Script" id=2]
+[ext_resource path="res://GUIGraphics/ProgressOver.png" type="Texture" id=3]
+[ext_resource path="res://GUIGraphics/ProgressUnder.png" type="Texture" id=4]
+
+[node name="LCARSProgress" type="TextureProgress"]
+margin_right = 90.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 90, 10 )
+value = 66.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
