@@ -102,13 +102,16 @@ var SHIP_STATE = SHIP_STATES.SHIP_STOPPED
 # Speed: How much per tick the ship moves
 
 var FUEL = 100000 setget set_fuel
-var TORPEDOS = 6
+var TORPEDOS = 1
 var MAX_SHIELDS = 100
-var SHIELDS = MAX_SHIELDS setget set_shields
+var SHIELDS = 5 setget set_shields
 
 var RATIONS = RATION_LEVELS.NORMAL
 var DESTINATION = 10000
 var DISTANCE_TRAVELLED = 0 setget set_distance
+
+var REPAIR_COST = 100
+var REPAIR_COST_MOD = 100
 
 var ENGINE_EFFICIENCY = 1 setget set_efficiency
 var WARP_SPEED = 1 setget set_warp
@@ -125,14 +128,25 @@ var EXPLORATION_TICKS = 10
 # SECTOR VARS
 var SECTOR_LENGTH = 0.33334 # 1/3rd of the path unit_offset
 var CURRENT_SECTOR = 0
-var SECTORS = [0, SECTOR_LENGTH, SECTOR_LENGTH*2]
+var SECTORS = [0, SECTOR_LENGTH, SECTOR_LENGTH*2, SECTOR_LENGTH*3]
 var END_OF_GAME_OFFSET = 1
 var SECTOR_NAMES = ["Taurus Reach", "Neutral Zone", "Fluidic Space"]
 var SECTOR_NAME = SECTOR_NAMES[0]
 
+var CUR_SECTOR_COLOR1 = Color(0, 0, 0, 0)
+var CUR_SECTOR_COLOR2 = Color(0, 0, 0, 0)
+
+var SECTOR_COLORS = [
+	[Color(0, 0.17, 0.16, 1), Color(0, 0.48, 0.69, 1)],
+	[Color(0.02, 0.22, 0.06, 1), Color(0.14, 0, 0.33, 1)],
+	[Color(0.22, 0.02, 0.04, 1), Color(0.31, 0, 0.5, 1)],
+	[Color(0.4, 0.4, 0.4, 1), Color(0.6, 0.6, 0.6, 1)],
+]
+
+
 # EVENT VARS
-var MAJOR_EVENT_CHANCE = 5
-var MINOR_EVENT_CHANCE = 3
+var MAJOR_EVENT_CHANCE = 10
+var MINOR_EVENT_CHANCE = 5
 
 
 #
@@ -197,4 +211,3 @@ func set_sector():
 		CURRENT_SECTOR = 1
 	if po >= SECTORS[2]:
 		CURRENT_SECTOR = 2
-	SECTOR_NAME = SECTOR_NAMES[CURRENT_SECTOR]

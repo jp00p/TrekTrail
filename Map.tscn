@@ -14,6 +14,8 @@ shader = ExtResource( 5 )
 shader_param/octaves = 32
 shader_param/viewport_size = Vector2( 250, 250 )
 shader_param/x_offset = 0.0
+shader_param/nebcolor1 = Color( 0.109804, 0.109804, 0.109804, 1 )
+shader_param/nebcolor2 = Color( 0.611765, 0.486275, 0.262745, 1 )
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
@@ -51,7 +53,6 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 margin_left = -31.6994
 margin_top = -33.6289
 margin_right = 337.301
@@ -83,7 +84,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="PathTrace" type="Node2D" parent="."]
+light_mask = 0
 script = ExtResource( 8 )
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -104,6 +106,7 @@ Path = NodePath("..")
 [node name="PlayerIcon" parent="." instance=ExtResource( 3 )]
 position = Vector2( 18.287, 242.179 )
 rotation = 0.105546
+scale = Vector2( 1, 1 )
 
 [node name="ScreenEffect" type="ColorRect" parent="."]
 material = SubResource( 4 )
@@ -113,4 +116,3 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="draw_line" from="Path2D/PathFollow2D/PlayerMapPosition" to="." method="_on_PlayerMapPosition_draw_line"]

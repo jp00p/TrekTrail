@@ -3,7 +3,7 @@ extends Control
 onready var rations = $RationContainer/HBoxContainer/CenterContainer/RationDesc
 
 func _ready():
-	pass
+	GlobalData.SECTOR_NAME = "Replicator Rations"
 
 func _on_LowRations_pressed():
 	GlobalData.RATIONS = GlobalData.RATION_LEVELS.LOW

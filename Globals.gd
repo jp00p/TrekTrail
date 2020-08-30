@@ -7,11 +7,13 @@ func viewscreen_add_message(msg):
 
 func hide_controls():
 	var controls = find_node_by_name(get_tree().get_root(), "ControlsContainer")
-	controls.hide()
+	if controls:
+		controls.hide()
 
 func show_controls():
 	var controls = find_node_by_name(get_tree().get_root(), "ControlsContainer")
-	controls.show()
+	if controls:
+		controls.show()
 	
 func viewscreen_load(path):
 	var Screen = find_node_by_name(get_tree().get_root(), "ScreenHolder")
@@ -23,9 +25,19 @@ func viewscreen_load(path):
 	
 func load_map():
 	var Main = find_node_by_name(get_tree().get_root(), "Main")
-	Main.alert("none")
-	viewscreen_load("res://Map.tscn")
+	if Main:
+		Main.alert("none")
+		show_controls()
+		viewscreen_load("res://Map.tscn")
 	
+func start_combat():
+	GlobalData.SHIP_STATE = GlobalData.SHIP_STATES.SHIP_HUNTING
+	hide_controls()
+	
+func stop_combat():
+	GlobalData.SHIP_STATE = GlobalData.SHIP_STATES.SHIP_STOPPED
+	show_controls()
+		
 func start_moving():
 	if GlobalData.SHIP_STATE != GlobalData.SHIP_STATES.SHIP_MOVING:
 		GlobalData.SHIP_STATE = GlobalData.SHIP_STATES.SHIP_MOVING

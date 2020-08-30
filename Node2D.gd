@@ -1,11 +1,11 @@
 extends Node2D
 
-var timer = 0.3
+var timer = 0.3 # start immediately
 var time_limit = 0.3
 
 func _draw():
 	if GlobalData.line_points.size() > 2:
-		draw_polyline(GlobalData.line_points, Color(1, 0, 0, 0.6), 4)
+		draw_polyline(GlobalData.line_points, Color(1, 0, 0, 0.3), 4)
 	
 func _process(delta):
 	timer += delta

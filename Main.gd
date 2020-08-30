@@ -11,7 +11,14 @@ func _ready():
 	pass
 
 func _process(_delta):
-	pass
+	GlobalData.set_sector()
+	# set up the colors lerping between sectors
+	var next_color_1 = GlobalData.SECTOR_COLORS[GlobalData.CURRENT_SECTOR+1][0]
+	var next_color_2 = GlobalData.SECTOR_COLORS[GlobalData.CURRENT_SECTOR+1][1]
+	# current_path / (cur_sector_length+next_sector_length) ... WHEW
+	var ratio = abs(GlobalData.PATH_OFFSET-GlobalData.SECTORS[GlobalData.CURRENT_SECTOR])/(GlobalData.SECTORS[GlobalData.CURRENT_SECTOR+1])
+	GlobalData.CUR_SECTOR_COLOR1 = GlobalData.SECTOR_COLORS[GlobalData.CURRENT_SECTOR][0].linear_interpolate(next_color_1, ratio)
+	GlobalData.CUR_SECTOR_COLOR2 = GlobalData.SECTOR_COLORS[GlobalData.CURRENT_SECTOR][1].linear_interpolate(next_color_2, ratio)
 
 func alert(color):
 	# displays the red alert animations
@@ -50,7 +57,6 @@ func ship_movement():
 	GlobalData.DISTANCE_TRAVELLED += GlobalData.SPEED
 	GlobalData.ENGINE_EFFICIENCY -= GlobalData.ENGINE_WEAR
 	GlobalData.EXPLORATION_COOLDOWN -= 1
-	viewscreen.viewscreen_set_title(GlobalData.SECTOR_NAME)
 	roll_movement_event()
 
 
@@ -110,13 +116,13 @@ func ship_exploration():
 	var roll = randi() % 100
 	tick_count += 1
 	if roll <= (GlobalData.EXPLORATION_BASE_CHANCE + GlobalData.EXPLORATION_BONUS_CHANCE):
-		roll = randi() % 2+1
-		if roll == 1:
+		roll = randi() % 100
+		if roll <= 90:
 			GlobalData.FUEL += randi() % 100
-			viewscreen.update_status_text("You found some fuel!")
-		elif roll == 2:
+			viewscreen.update_status_text("You found some [color=#0f0]dilithium crystals![/color]")
+		elif roll > 90:
 			GlobalData.TORPEDOS += 1
-			viewscreen.update_status_text("You found a torpedo!")
+			viewscreen.update_status_text("You found a random [rainbow]photon torpedo[/rainbow] floating around in space!")
 		
 
 
@@ -134,12 +140,18 @@ func roll_movement_event():
 		return
 	
 	#minor events
-	if (randi()%100) <= GlobalData.MINOR_EVENT_CHANCE:
-		if GlobalData.CREW.size() >= 1:
-			viewscreen.update_status_text("[color=gray]"+
-				GlobalData.CREW[randi()%GlobalData.CREW.size()].name + " " +
-				Babble.generate_technobabble() + ".[/color]"
-			)
+	elif (randi()%100) <= GlobalData.MINOR_EVENT_CHANCE:
+		print("rolling random minor event")
+		var mroll = randi()%100
+		#warp speed increases the chances a microasteroid will hit
+		if mroll <= 86:
+			if GlobalData.CREW.size() >= 1:
+				viewscreen.update_status_text("[color=gray]"+
+					GlobalData.CREW[randi()%GlobalData.CREW.size()].name + " " +
+					Babble.generate_technobabble() + ".[/color]"
+				)
+		else:
+			viewscreen.update_status_text("A micro-asteroid hit the ship!")
 		return
 
 
@@ -217,9 +229,8 @@ func _on_ControlsContainer_sickbay():
 func _on_ControlsContainer_repair():
 	# repair button
 	Globals.stop_moving()
-	Globals.hide_controls()
-	viewscreen.viewscreen_set_title("Ferengi Attack!")
-	viewscreen.viewscreen_load("res://ShootingGame.tscn")
+	viewscreen.viewscreen_set_title("Repair")
+	viewscreen.viewscreen_load("res://GUIElements/Repair.tscn")
 
 func _on_ControlsContainer_rations():
 	# rations button

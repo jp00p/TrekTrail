@@ -13,7 +13,10 @@ onready var warp_speed = $WarpContainer/VBoxContainer/HBoxContainer/WarpSpeedAmt
 onready var actual_speed = $WarpContainer/VBoxContainer/Engineering/SpeedAmt
 onready var efficiency = $WarpContainer/VBoxContainer/Engineering/EfficiencyAmt
 
-func _process(delta):
+#debug
+onready var debug_state = $DEBUGSTATE
+
+func _process(_delta):
 	day.text = str(GlobalData.DAYS_PASSED)
 	hour.text = str(GlobalData.TIME_OF_DAY)
 	shields.text = str(GlobalData.SHIELDS)
@@ -25,3 +28,5 @@ func _process(delta):
 	warp_speed.text = "WARP " + str(GlobalData.WARP_SPEED)
 	efficiency.value = round(GlobalData.ENGINE_EFFICIENCY * 100)
 	actual_speed.value = ceil(GlobalData.SPEED)
+	var statekeys = GlobalData.SHIP_STATES.keys()
+	debug_state.text = str(statekeys[GlobalData.SHIP_STATE])

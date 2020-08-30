@@ -4,6 +4,8 @@ shader_type canvas_item;
 uniform int octaves = 5;
 uniform vec2 viewport_size = vec2(800.0, 600.0);
 uniform float x_offset = 0.;
+uniform vec4 nebcolor1 : hint_color = vec4(128., 28., 28., 0.);
+uniform vec4 nebcolor2 : hint_color = vec4(28., 128., 28., 0.);
 
 varying vec2 vtx;
 
@@ -145,9 +147,9 @@ vec4 mainImage(vec2 fragCoord)
 	
 	vec2 coord = fragCoord.xy / resolution;
 	
-	vec3 result = vec3(0.);
-	vec3 nebulaColor1 = hsv2rgb(vec3(.5, 0.5, .25));
-	vec3 nebulaColor2 = hsv2rgb(vec3(.7, 1., .25));
+	vec3 result = vec3(0.015);
+	vec3 nebulaColor1 = nebcolor1.rgb;
+	vec3 nebulaColor2 = nebcolor2.rgb;
 
 	result += fractalNebula(coord + vec2(.1, .1), nebulaColor1, 1.);
 	result += fractalNebula(coord + vec2(0., .2), nebulaColor2, .5);

@@ -1,9 +1,9 @@
 extends Control
 onready var path = $Path2D.curve
-onready var draw_timer = $Timer
 onready var screen = $ScreenEffect
 var pos 
-
+var sector_progress
+# shows different levels of aberration when damaged
 var damage_effects = [
 	[1, 5],
 	[1, 4],
@@ -12,14 +12,21 @@ var damage_effects = [
 
 func _ready():
 	GlobalData.PATH_LENGTH = floor(path.get_baked_length())
+	GlobalData.SECTOR_NAME = GlobalData.SECTOR_NAMES[GlobalData.CURRENT_SECTOR]
+	$MapBG.material.set_shader_param("x_offset", GlobalData.PATH_OFFSET*1000)
 
-func _process(delta):
+func _process(_delta):
 	if GlobalData.SHIP_STATE == GlobalData.SHIP_STATES.SHIP_MOVING:
-		$MapBG.material.set_shader_param("x_offset", $Path2D/PathFollow2D.offset * GlobalData.WARP_SPEED)
+		$MapBG.material.set_shader_param("x_offset", GlobalData.PATH_OFFSET*1000)
 		move_start()
 	else:
 		move_stop()
 	
+		
+	$MapBG.material.set_shader_param("nebcolor1", GlobalData.CUR_SECTOR_COLOR1)
+	$MapBG.material.set_shader_param("nebcolor2", GlobalData.CUR_SECTOR_COLOR2)
+	
+	# this mess controls the amount of "damage" your screen has
 	if GlobalData.SHIELDS >= 85:
 		screen.material.set_shader_param("aberration_amount", 0)
 		screen.material.set_shader_param("aberration_speed", 0)
@@ -36,6 +43,7 @@ func _process(delta):
 
 func move_start():
 	$Path2D/PathFollow2D/PlayerMapPosition.moving = true
+	
 
 func move_stop():
 	$Path2D/PathFollow2D/PlayerMapPosition.moving = false

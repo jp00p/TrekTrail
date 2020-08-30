@@ -17,6 +17,7 @@ font_data = ExtResource( 6 )
 default_font = SubResource( 1 )
 
 [node name="Main" type="Node2D"]
+light_mask = 16
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -56,6 +57,7 @@ custom_constants/separation = 20
 [node name="RedAlertIndicatorLeft" parent="GUI/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
 
 [node name="ViewScreenContainer" parent="GUI/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
+light_mask = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
@@ -123,7 +125,6 @@ autostart = true
 wait_time = 6.0
 
 [node name="Timer" type="Timer" parent="."]
-[connection signal="alert" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ViewScreenContainer" to="." method="_on_ViewScreenContainer_alert"]
 [connection signal="explore" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ControlsContainer" to="." method="_on_ControlsContainer_explore"]
 [connection signal="go" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ControlsContainer" to="." method="_on_ControlsContainer_go"]
 [connection signal="rations" from="GUI/MarginContainer/VBoxContainer/HBoxContainer/ControlsContainer" to="." method="_on_ControlsContainer_rations"]

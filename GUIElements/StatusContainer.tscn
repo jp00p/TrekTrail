@@ -311,9 +311,13 @@ text = "ENGINE"
 margin_top = 25.0
 margin_right = 116.0
 margin_bottom = 35.0
-max_value = 100.0
 
 [node name="EfficiencyAmt" parent="WarpContainer/VBoxContainer/Engineering" instance=ExtResource( 3 )]
 margin_top = 39.0
 margin_right = 116.0
 margin_bottom = 49.0
+
+[node name="DEBUGSTATE" type="Label" parent="."]
+margin_top = 371.0
+margin_right = 225.0
+margin_bottom = 392.0

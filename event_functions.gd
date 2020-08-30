@@ -2,22 +2,31 @@ extends Node
 
 func has_crew(station): # check if station exists in crew
 						# stations don't stack!
+						# diseased crew members don't count
 	for c in GlobalData.CREW:
-		if str(c.station) == str(station):
+		if str(c.station) == str(station) and c.disease == null:
 			return true
 	return false
 	
-func combat(enemy_type):
+func combat(enemy_type, custom_message=""):
+	Globals.start_combat()
 	Globals.viewscreen_load("res://ShootingGame.tscn")
-	return "Engaging the " + str(enemy_type)
+	if custom_message == "":
+		return "Engaging the " + str(enemy_type)
+	else:
+		return custom_message.format(enemy_type)
 	
 func torpedos(enemy_type):
-	if GlobalData.TORPEDOS < 2:
-		Globals.viewscreen_load("res://ShootingGame.tscn")
-		return "You don't have enough torpedos! Engaging the enemy in close combat!"
+	GlobalData.PATH_OFFSET -= rand_range(0.01, GlobalData.PATH_OFFSET)
 	Globals.load_map()
-	GlobalData.TORPEDOS -= 2
-	return "Firing torpedos!"
+	return
+	if GlobalData.TORPEDOS < 2:
+		combat(enemy_type)
+		return "You don't have enough torpedos! You'll have to engage the %s in close combat!" % enemy_type	
+	else:
+		Globals.load_map()
+		GlobalData.TORPEDOS -= 2
+		return "Firing torpedos!"
 	
 func lose_crew_member():
 	if GlobalData.CREW.size() > 0:

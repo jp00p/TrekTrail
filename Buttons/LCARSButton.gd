@@ -19,18 +19,29 @@ func _ready():
 
 	var new_normal_style = load("res://Buttons/LCARSButton.tres").duplicate()
 	var new_hover_style = load("res://Buttons/LCARSButton.tres").duplicate()
+	var new_disabled_style = load("res://Buttons/LCARSButton.tres").duplicate()
 	
 	new_normal_style.set_bg_color(colors[color].normal)
 	new_hover_style.set_bg_color(colors[color].hover)
+	new_disabled_style.set_bg_color(Color("#9a9a9a"))
 	
 	if side == 1:
 		new_normal_style.set_corner_radius_individual(60, 0, 0, 60)
 		new_hover_style.set_corner_radius_individual(60, 0, 0, 60)
+		new_disabled_style.set_corner_radius_individual(60, 0, 0, 60)
+		new_normal_style.content_margin_left = 20
+		new_normal_style.content_margin_right = -1
+		new_hover_style.content_margin_left = 20
+		new_hover_style.content_margin_right = -1
+		new_disabled_style.content_margin_left = 20
+		new_disabled_style.content_margin_right = -1
+		set_text_align(ALIGN_LEFT)
 
 	self.set('custom_styles/normal', new_normal_style)
 	self.set('custom_styles/pressed', new_normal_style)
 	self.set('custom_styles/focus', new_hover_style)
 	self.set('custom_styles/hover', new_hover_style)
+	self.set('custom_styles/disabled', new_disabled_style)
 
 func _on_LCARSButton_pressed():
 	self.release_focus()

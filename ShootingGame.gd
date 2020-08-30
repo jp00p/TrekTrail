@@ -40,7 +40,7 @@ func _process(delta):
 	if GlobalData.FUEL > 0:
 		shot_progress.value = 100 - (shot_timer.time_left/base_time*100)
 	offset += scroll_dir
-	$ColorRect.material.set_shader_param("x_offset", offset*scroll_speed)
+	$SpaceBG.material.set_shader_param("x_offset", offset*scroll_speed)
 	
 	if damage_effect_timer > 0:
 		# show an effect when you're hit
@@ -58,10 +58,13 @@ func _input(event):
 				can_shoot = false
 				shot_timer.start()
 				var point = get_local_mouse_position()
+				#point.x += 6
+				#point.y += 8
 				create_laser(point)
 				print(phasers.points)
 				yield(get_tree().create_timer(0.075), "timeout")
 				# clear phasers right after fired
+				
 				phasers.remove_point(1)
 				for c in $Phasers/StaticBody2D.get_children():
 					c.queue_free();
@@ -89,6 +92,7 @@ func create_laser(point):
 	var phaser_angle = phaser_start.angle_to_point(point)
 	var s = create_segment(phaser_start, point)
 	$Phasers/StaticBody2D.add_child(s)
+	
 
 func create_segment(p1,p2):
 	# create the collision box for the laser
@@ -109,6 +113,7 @@ func shield_damage():
 
 func _on_GameTimer_timeout():
 	emit_signal("hunting_ended")
+	Globals.stop_combat()
 	Globals.load_map()
 	Input.set_custom_mouse_cursor(null,
 			Input.CURSOR_ARROW,

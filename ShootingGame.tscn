@@ -1,14 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ShootingGame.gd" type="Script" id=1]
 [ext_resource path="res://Shaders/CRT.shader" type="Shader" id=2]
-[ext_resource path="res://Shaders/starfield.shader" type="Shader" id=3]
+[ext_resource path="res://GUIElements/SpaceBG.tscn" type="PackedScene" id=3]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 3 )
-shader_param/octaves = 5
-shader_param/viewport_size = Vector2( 500, 500 )
-shader_param/x_offset = 0.0
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.247059, 0.054902, 0.054902, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 40
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.411043, 0.730061, 0.993865 )
@@ -31,6 +34,7 @@ shader_param/move_aberration = true
 shader_param/aberration_speed = 3.0
 
 [node name="ShootingGame" type="Control"]
+light_mask = 2
 margin_right = 320.0
 margin_bottom = 272.0
 rect_min_size = Vector2( 320, 272 )
@@ -43,14 +47,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource( 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="SpaceBG" parent="." instance=ExtResource( 3 )]
 
 [node name="Enemies" type="Control" parent="."]
 anchor_right = 1.0
@@ -61,6 +58,28 @@ __meta__ = {
 
 [node name="ShipTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="ShotTimer" type="Timer" parent="."]
+
+[node name="ShotProgress" type="ProgressBar" parent="."]
+light_mask = 16
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -26.0
+margin_right = -10.0
+margin_bottom = -12.0
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Phasers" type="Line2D" parent="."]
 use_parent_material = true
@@ -75,23 +94,6 @@ antialiased = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Phasers"]
 collision_layer = 2
-
-[node name="GameTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
-[node name="ShotTimer" type="Timer" parent="."]
-
-[node name="ShotProgress" type="ProgressBar" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -24.0
-margin_bottom = -10.0
-value = 100.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScreenEffect" type="ColorRect" parent="."]
 material = SubResource( 3 )

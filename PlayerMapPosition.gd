@@ -1,6 +1,5 @@
 extends RemoteTransform2D
 
-signal draw_line
 export(NodePath) var Path
 var base_speed = 0.0001
 var moving = false
