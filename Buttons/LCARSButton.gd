@@ -2,7 +2,7 @@ tool
 extends Button
 
 export(int, "Orange", "Light Blue", "Faded Purple", "Red", "Pink", "Blue") var color
-export(int, "Left", "Right") var side
+export(int, "Left", "Right", "Both") var side
 
 var colors = [
 	{"normal":Color("#f7bd5a"),"hover":Color("#ff9c00")},
@@ -36,6 +36,11 @@ func _ready():
 		new_disabled_style.content_margin_left = 20
 		new_disabled_style.content_margin_right = -1
 		set_text_align(ALIGN_LEFT)
+	if side == 2:
+		new_normal_style.set_corner_radius_individual(60, 60, 60, 60)
+		new_hover_style.set_corner_radius_individual(60, 60, 60, 60)
+		new_disabled_style.set_corner_radius_individual(60, 60, 60, 60)
+		
 
 	self.set('custom_styles/normal', new_normal_style)
 	self.set('custom_styles/pressed', new_normal_style)

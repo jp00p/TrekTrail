@@ -5,14 +5,14 @@
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_right = 20.0
-bg_color = Color( 0.392157, 0.427451, 0.8, 1 )
+bg_color = Color( 0, 0, 0.533333, 1 )
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_right = 20.0
-bg_color = Color( 0.611765, 0.611765, 1, 1 )
+bg_color = Color( 0.2, 0.4, 1, 1 )
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_detail = 20
@@ -26,14 +26,14 @@ corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=4]
 content_margin_left = 20.0
-bg_color = Color( 0.392157, 0.427451, 0.8, 1 )
+bg_color = Color( 0, 0, 0.533333, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=5]
 content_margin_left = 20.0
-bg_color = Color( 0.611765, 0.611765, 1, 1 )
+bg_color = Color( 0.2, 0.4, 1, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
@@ -47,14 +47,14 @@ corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=7]
 content_margin_right = 20.0
-bg_color = Color( 0.466667, 0.266667, 0.4, 1 )
+bg_color = Color( 0.392157, 0.427451, 0.8, 1 )
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=8]
 content_margin_right = 20.0
-bg_color = Color( 0.6, 0.466667, 0.666667, 1 )
+bg_color = Color( 0.611765, 0.611765, 1, 1 )
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_detail = 20
@@ -68,14 +68,14 @@ corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=10]
 content_margin_left = 20.0
-bg_color = Color( 0.466667, 0.266667, 0.4, 1 )
+bg_color = Color( 0.392157, 0.427451, 0.8, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=11]
 content_margin_left = 20.0
-bg_color = Color( 0.6, 0.466667, 0.666667, 1 )
+bg_color = Color( 0.611765, 0.611765, 1, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
@@ -194,14 +194,14 @@ corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=28]
 content_margin_left = 20.0
-bg_color = Color( 0, 0, 0.533333, 1 )
+bg_color = Color( 0.466667, 0.266667, 0.4, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id=29]
 content_margin_left = 20.0
-bg_color = Color( 0.2, 0.4, 1, 1 )
+bg_color = Color( 0.6, 0.466667, 0.666667, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
@@ -240,7 +240,7 @@ custom_styles/focus = SubResource( 1 )
 custom_styles/disabled = SubResource( 3 )
 custom_styles/normal = SubResource( 2 )
 text = "WARP 1"
-color = 1
+color = 5
 
 [node name="Warp2" parent="GridContainer" instance=ExtResource( 1 )]
 margin_left = 190.0
@@ -253,7 +253,7 @@ custom_styles/disabled = SubResource( 6 )
 custom_styles/normal = SubResource( 5 )
 text = "WARP 2"
 align = 0
-color = 1
+color = 5
 side = 1
 
 [node name="Warp3" parent="GridContainer" instance=ExtResource( 1 )]
@@ -265,7 +265,7 @@ custom_styles/focus = SubResource( 7 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 8 )
 text = "WARP 3"
-color = 2
+color = 1
 
 [node name="Warp4" parent="GridContainer" instance=ExtResource( 1 )]
 margin_left = 190.0
@@ -279,7 +279,7 @@ custom_styles/disabled = SubResource( 12 )
 custom_styles/normal = SubResource( 11 )
 text = "WARP 4"
 align = 0
-color = 2
+color = 1
 side = 1
 
 [node name="Warp5" parent="GridContainer" instance=ExtResource( 1 )]
@@ -353,8 +353,8 @@ custom_styles/pressed = SubResource( 29 )
 custom_styles/focus = SubResource( 28 )
 custom_styles/disabled = SubResource( 30 )
 custom_styles/normal = SubResource( 29 )
-text = "Cancel"
+text = "Close"
 align = 0
-color = 5
+color = 2
 side = 1
 [connection signal="pressed" from="GridContainer/Cancel" to="." method="_on_Cancel_pressed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/engage.ogg-a59e99b75c5c7292497a162ca68d1236.oggstr"
+
+[deps]
+
+source_file="res://Sounds/engage.ogg"
+dest_files=[ "res://.import/engage.ogg-a59e99b75c5c7292497a162ca68d1236.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

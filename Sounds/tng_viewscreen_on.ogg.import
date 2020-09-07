@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tng_viewscreen_on.ogg-877953c97ea478d44c7752250f16820e.oggstr"
+
+[deps]
+
+source_file="res://Sounds/tng_viewscreen_on.ogg"
+dest_files=[ "res://.import/tng_viewscreen_on.ogg-877953c97ea478d44c7752250f16820e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

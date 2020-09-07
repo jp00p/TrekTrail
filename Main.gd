@@ -53,9 +53,16 @@ func ship_movement():
 	# tick exploration cooldown
 	# show current sector name
 	# roll for random events
-	GlobalData.FUEL = GlobalData.FUEL - GlobalData.FUEL_USE
+	
+	# engineering crew helps reduce engine wear
+	if EventFunctions.has_crew("Engineering"):
+		GlobalData.ENGINE_WEAR_MOD = 0.5
+	else:
+		GlobalData.ENGINE_WEAR_MOD = 1
+		
+	GlobalData.FUEL -= GlobalData.FUEL_USE
 	GlobalData.DISTANCE_TRAVELLED += GlobalData.SPEED
-	GlobalData.ENGINE_EFFICIENCY -= GlobalData.ENGINE_WEAR
+	GlobalData.ENGINE_EFFICIENCY -= (GlobalData.ENGINE_WEAR*GlobalData.ENGINE_WEAR_MOD)
 	GlobalData.EXPLORATION_COOLDOWN -= 1
 	roll_movement_event()
 

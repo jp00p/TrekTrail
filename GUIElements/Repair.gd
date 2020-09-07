@@ -3,8 +3,10 @@ extends Control
 var repair_cost = 0
 
 func _ready():
-	GlobalData.SECTOR_NAME = "Repairs"
-	repair_cost = ceil(GlobalData.REPAIR_COST * GlobalData.REPAIR_COST_MOD)
+	GlobalData.SECTOR_NAME = "Repairs"	
+	repair_cost = ceil(GlobalData.REPAIR_COST)
+	if EventFunctions.has_crew("Engineering"):
+		repair_cost *= 0.5
 	$MainContainer/CancelContainer/HBoxContainer/CostAmt.text = str(repair_cost)
 
 func _process(_delta):
@@ -15,13 +17,18 @@ func check_fuel_cost():
 		$MainContainer/ButtonContainer/ShieldsButton.set_disabled(true)
 		$MainContainer/ButtonContainer/EnginesButton.set_disabled(true)
 		$MainContainer/CancelContainer/HBoxContainer/CostAmt.set("custom_colors/font_color", Color("#ff0000"))
+	if GlobalData.SHIELDS >= GlobalData.MAX_SHIELDS:
+		$MainContainer/ButtonContainer/ShieldsButton.set_disabled(true)
+	if GlobalData.ENGINE_EFFICIENCY >= 1:
+		$MainContainer/ButtonContainer/EnginesButton.set_disabled(true)
 		
 func _on_ShieldsButton_pressed():
 	GlobalData.FUEL -= repair_cost
 	GlobalData.SHIELDS += randi()%10+1
 
 func _on_EnginesButton_pressed():
-	pass # Replace with function body.
+	GlobalData.FUEL -= repair_cost
+	GlobalData.ENGINE_EFFICIENCY += rand_range(0.1, 0.2)+0.5
 
 func _on_Cancel_pressed():
 	Globals.load_map()

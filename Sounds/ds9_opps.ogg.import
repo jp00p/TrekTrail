@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ds9_opps.ogg-e8aeced9520b860b78c222a87d8ea282.oggstr"
+
+[deps]
+
+source_file="res://Sounds/ds9_opps.ogg"
+dest_files=[ "res://.import/ds9_opps.ogg-e8aeced9520b860b78c222a87d8ea282.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ds9_promenade.ogg-0bc919b075ea8118f11844ebe133e37c.oggstr"
+
+[deps]
+
+source_file="res://Sounds/ds9_promenade.ogg"
+dest_files=[ "res://.import/ds9_promenade.ogg-0bc919b075ea8118f11844ebe133e37c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/computerbeep_43.ogg-afab4eda7f2df6ac7e1a371cf41d9d75.oggstr"
+
+[deps]
+
+source_file="res://Sounds/computerbeep_43.ogg"
+dest_files=[ "res://.import/computerbeep_43.ogg-afab4eda7f2df6ac7e1a371cf41d9d75.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

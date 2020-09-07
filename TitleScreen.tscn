@@ -1,0 +1,371 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://GUIElements/SpaceBG.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Shaders/dissolve.shader" type="Shader" id=3]
+[ext_resource path="res://Buttons/LCARSButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Fonts/TNG_Title.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Sounds/zapsplat_sound_design_sweep_chopper_stutter_dark_004_36652.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/zapsplat_sound_design_whoosh_002_52492.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/computerbeep_51.ogg" type="AudioStream" id=8]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+
+[sub_resource type="NoiseTexture" id=2]
+width = 1024
+height = 1024
+noise = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 3 )
+shader_param/burn_color = Color( 1, 1, 1, 1 )
+shader_param/burn_size = null
+shader_param/dissolve_amount = 1.0
+shader_param/emission_amount = null
+shader_param/dissolve_texture = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 128
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 3 )
+shader_param/burn_color = Color( 1, 1, 1, 1 )
+shader_param/burn_size = null
+shader_param/dissolve_amount = 1.0
+shader_param/emission_amount = null
+shader_param/dissolve_texture = SubResource( 2 )
+
+[sub_resource type="OpenSimplexNoise" id=8]
+
+[sub_resource type="NoiseTexture" id=9]
+width = 1024
+height = 1024
+noise = SubResource( 8 )
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 3 )
+shader_param/burn_color = Color( 1, 1, 1, 1 )
+shader_param/burn_size = null
+shader_param/dissolve_amount = 1.0
+shader_param/emission_amount = null
+shader_param/dissolve_texture = SubResource( 9 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 64
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="Theme" id=12]
+default_font = SubResource( 11 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "dissolve"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Title1:material:shader_param/dissolve_amount")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Title2:material:shader_param/dissolve_amount")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.5, 3.4, 4.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Subtitle:material:shader_param/dissolve_amount")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 5, 8 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HBoxContainer:rect_position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 7, 8 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 380, 542.454 ), Vector2( 380, 491.512 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HBoxContainer:modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 7, 7.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 2.7 )
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.62,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 4.5 )
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "dissolve_start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Title1:material:shader_param/dissolve_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Title2:material:shader_param/dissolve_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Subtitle:material:shader_param/dissolve_amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HBoxContainer:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 380, 491.512 ), Vector2( 380, 557.438 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=20]
+content_margin_left = 20.0
+bg_color = Color( 0.533333, 0.133333, 0.0666667, 1 )
+corner_radius_top_left = 60
+corner_radius_bottom_left = 60
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=21]
+content_margin_left = 20.0
+bg_color = Color( 0.733333, 0.266667, 0.0666667, 1 )
+corner_radius_top_left = 60
+corner_radius_bottom_left = 60
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=22]
+content_margin_left = 20.0
+bg_color = Color( 0.603922, 0.603922, 0.603922, 1 )
+corner_radius_top_left = 60
+corner_radius_bottom_left = 60
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=23]
+content_margin_right = 20.0
+bg_color = Color( 0.466667, 0.266667, 0.4, 1 )
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=24]
+content_margin_right = 20.0
+bg_color = Color( 0.6, 0.466667, 0.666667, 1 )
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id=25]
+content_margin_right = 20.0
+bg_color = Color( 0.603922, 0.603922, 0.603922, 1 )
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_detail = 20
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpaceBG" parent="." instance=ExtResource( 2 )]
+
+[node name="Title1" type="Label" parent="."]
+material = SubResource( 3 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -265.843
+margin_top = -230.315
+margin_right = -12.8425
+margin_bottom = -96.3155
+theme = SubResource( 5 )
+text = "Trek"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="."]
+material = SubResource( 6 )
+margin_left = 406.609
+margin_top = 178.8
+margin_right = 686.609
+margin_bottom = 312.8
+theme = SubResource( 5 )
+text = "Trail"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtitle" type="Label" parent="."]
+material = SubResource( 10 )
+margin_left = 187.288
+margin_top = 356.597
+margin_right = 804.288
+margin_bottom = 423.597
+theme = SubResource( 12 )
+text = "Escape from Pacifica"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "dissolve"
+anims/dissolve = SubResource( 7 )
+anims/dissolve_start = SubResource( 19 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -132.0
+margin_top = -57.5457
+margin_right = 132.0
+margin_bottom = -17.5457
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGame" parent="HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 2.0
+margin_right = 132.0
+margin_bottom = 39.0
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/disabled = SubResource( 22 )
+custom_styles/normal = SubResource( 21 )
+text = "Start Game"
+align = 0
+color = 3
+side = 1
+
+[node name="ViewScores" parent="HBoxContainer" instance=ExtResource( 4 )]
+margin_left = 132.0
+margin_right = 262.0
+margin_bottom = 39.0
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 24 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 24 )
+text = "View Scores"
+color = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+[connection signal="pressed" from="HBoxContainer/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

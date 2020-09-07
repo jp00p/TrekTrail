@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/A Fistful of Datas.ogg-4b305a687f80ac143a98a11ed3c07802.oggstr"
+
+[deps]
+
+source_file="res://Sounds/A Fistful of Datas.ogg"
+dest_files=[ "res://.import/A Fistful of Datas.ogg-4b305a687f80ac143a98a11ed3c07802.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

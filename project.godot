@@ -26,6 +26,7 @@ EventData="*res://EventData/event_data.gd"
 EventFunctions="*res://event_functions.gd"
 Babble="*res://technobabble.gd"
 Globals="*res://Globals.gd"
+AudioStreamManager="*res://AudioStreamManager.gd"
 
 [display]
 

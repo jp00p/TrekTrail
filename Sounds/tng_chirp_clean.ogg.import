@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tng_chirp_clean.ogg-fc23de80a6da1b976f1af2bbb52974fd.oggstr"
+
+[deps]
+
+source_file="res://Sounds/tng_chirp_clean.ogg"
+dest_files=[ "res://.import/tng_chirp_clean.ogg-fc23de80a6da1b976f1af2bbb52974fd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tng_engine_1.ogg-5845653db1ef491f564e5c2c767aaacb.oggstr"
+
+[deps]
+
+source_file="res://Sounds/tng_engine_1.ogg"
+dest_files=[ "res://.import/tng_engine_1.ogg-5845653db1ef491f564e5c2c767aaacb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

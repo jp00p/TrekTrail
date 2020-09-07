@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/processing3.ogg-8a8b98b9be1155d1502d28140fa3bbc3.oggstr"
+
+[deps]
+
+source_file="res://Sounds/processing3.ogg"
+dest_files=[ "res://.import/processing3.ogg-8a8b98b9be1155d1502d28140fa3bbc3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

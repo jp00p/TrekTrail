@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tng_bridge_2.ogg-388738bf87174ebc2219e924b47a86eb.oggstr"
+
+[deps]
+
+source_file="res://Sounds/tng_bridge_2.ogg"
+dest_files=[ "res://.import/tng_bridge_2.ogg-388738bf87174ebc2219e924b47a86eb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

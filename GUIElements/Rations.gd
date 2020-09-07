@@ -4,6 +4,9 @@ onready var rations = $RationContainer/HBoxContainer/CenterContainer/RationDesc
 
 func _ready():
 	GlobalData.SECTOR_NAME = "Replicator Rations"
+	for c in range($RationContainer/HBoxContainer/ButtonHolder.get_child_count()):
+		if c+1 == GlobalData.RATIONS:
+			$RationContainer/HBoxContainer/ButtonHolder.get_child(c).pressed = true
 
 func _on_LowRations_pressed():
 	GlobalData.RATIONS = GlobalData.RATION_LEVELS.LOW
@@ -22,3 +25,5 @@ func _on_HighRations_pressed():
 	Globals.viewscreen_add_message("Rations set to high!")
 	rations.text = "Fuel use will be very high, but the chances of getting sick drop to near zero."
 	
+func _on_CancelButton_pressed():
+	Globals.load_map()

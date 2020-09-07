@@ -1,7 +1,5 @@
 extends Control
 
-signal speed_selection(speed)
-
 func _ready():
 	GlobalData.SECTOR_NAME = "Warp Speed Controls"
 	for n in $GridContainer.get_children():

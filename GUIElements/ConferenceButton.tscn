@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="ConferenceButton" type="Button"]
+margin_right = 12.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 150, 150 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Button Text is here!"

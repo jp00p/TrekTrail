@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tng_hum_clean.ogg-b6cdba2b71076e56e205caf983eb892a.oggstr"
+
+[deps]
+
+source_file="res://Sounds/tng_hum_clean.ogg"
+dest_files=[ "res://.import/tng_hum_clean.ogg-b6cdba2b71076e56e205caf983eb892a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -72,8 +72,8 @@ var DISEASES = {
 	}
 }
 
-# CREW VARS
-var CAPTAIN = {} # TODO: Figure this out
+# CONFERENCE & CREW VARS
+var CONFERENCE
 var CREW = []
 
 # TIME VARS
@@ -104,7 +104,7 @@ var SHIP_STATE = SHIP_STATES.SHIP_STOPPED
 var FUEL = 100000 setget set_fuel
 var TORPEDOS = 1
 var MAX_SHIELDS = 100
-var SHIELDS = 5 setget set_shields
+var SHIELDS = 100 setget set_shields
 
 var RATIONS = RATION_LEVELS.NORMAL
 var DESTINATION = 10000
@@ -115,7 +115,10 @@ var REPAIR_COST_MOD = 100
 
 var ENGINE_EFFICIENCY = 1 setget set_efficiency
 var WARP_SPEED = 1 setget set_warp
-var ENGINE_WEAR = pow(WARP_SPEED,2)*0.005
+var ENGINE_WEAR_MOD = 1
+var ENGINE_WEAR = (pow(WARP_SPEED,2)*0.009)
+var BASE_FUEL_USE = 100
+var FUEL_USE_MOD = 1
 var FUEL_USE = calc_fuel_use()
 var SPEED = calc_speed()
 
@@ -145,9 +148,8 @@ var SECTOR_COLORS = [
 
 
 # EVENT VARS
-var MAJOR_EVENT_CHANCE = 10
+var MAJOR_EVENT_CHANCE = 15
 var MINOR_EVENT_CHANCE = 5
-
 
 #
 # all the setters and getters
@@ -161,7 +163,7 @@ func set_distance(val):
 	set_sector()
 
 func set_efficiency(val):
-	ENGINE_EFFICIENCY = max(val, 0.01)
+	ENGINE_EFFICIENCY = clamp(val, 0.01, 1)
 
 func set_warp(val):
 	WARP_SPEED = int(val)
@@ -172,9 +174,7 @@ func calc_ship_resources():
 	SPEED = calc_speed()
 
 func calc_fuel_use():
-	if SHIP_STATE != SHIP_STATES.SHIP_MOVING:
-		return 0
-	return int(round(
+	return int(ceil(
 		(WARP_SPEED) * (RATIONS * CREW.size()) / ENGINE_EFFICIENCY )
 	)
 

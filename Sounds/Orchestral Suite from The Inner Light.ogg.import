@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Orchestral Suite from The Inner Light.ogg-a3cf24c85c92b402184a12c54a4d676c.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Orchestral Suite from The Inner Light.ogg"
+dest_files=[ "res://.import/Orchestral Suite from The Inner Light.ogg-a3cf24c85c92b402184a12c54a4d676c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/padd_buttons.ogg-b83cefb66a29df080434f17364207197.oggstr"
+
+[deps]
+
+source_file="res://Sounds/padd_buttons.ogg"
+dest_files=[ "res://.import/padd_buttons.ogg-b83cefb66a29df080434f17364207197.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

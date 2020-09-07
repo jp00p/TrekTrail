@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/zapsplat_sound_design_sweep_chopper_stutter_dark_004_36652.ogg-d036cfbc7720f69d951659f88dd74027.oggstr"
+
+[deps]
+
+source_file="res://Sounds/zapsplat_sound_design_sweep_chopper_stutter_dark_004_36652.ogg"
+dest_files=[ "res://.import/zapsplat_sound_design_sweep_chopper_stutter_dark_004_36652.ogg-d036cfbc7720f69d951659f88dd74027.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

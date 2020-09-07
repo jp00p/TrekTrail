@@ -15,7 +15,6 @@ var cursor_image = preload("res://ShootingGame/cursor.png")
 var base_time = 1
 var damage_effect_timer = 0
 
-
 func _ready():
 	randomize()
 	
@@ -30,8 +29,10 @@ func _ready():
 	# if there are any TACTICAL crew members, 
 	# our phaser timer is reduced by half
 	#
+	if GlobalData.CONFERENCE == "Tactical":
+		base_time = base_time * 0.7
 	if EventFunctions.has_crew("Tactical"):
-		base_time = 0.5
+		base_time = base_time * 0.5
 	
 	shot_timer.wait_time = base_time
 
@@ -87,7 +88,8 @@ func create_laser(point):
 	if GlobalData.FUEL <= 0:
 		return
 	GlobalData.FUEL -= 10
-	phasers.remove_point(1)
+	if phasers.points.size() > 1:
+		phasers.remove_point(1)
 	phasers.add_point(point)
 	var phaser_angle = phaser_start.angle_to_point(point)
 	var s = create_segment(phaser_start, point)
@@ -100,16 +102,16 @@ func create_segment(p1,p2):
 	collision.shape = SegmentShape2D.new()
 	collision.shape.a = p1
 	collision.shape.b = p2
-	collision.shape.connect("body_entered", self, "enemy_hit")
+	#collision.shape.connect("body_entered", self, "enemy_hit")
 	return collision
 
 func _on_ShotTimer_timeout():
 	shot_timer.stop()
 	can_shoot = true
 
-func shield_damage():
-	GlobalData.SHIELDS -= 10
-	damage_effect_timer = 10	
+func shield_damage(damage):
+	GlobalData.SHIELDS -= randi()%damage
+	damage_effect_timer = 10
 
 func _on_GameTimer_timeout():
 	emit_signal("hunting_ended")

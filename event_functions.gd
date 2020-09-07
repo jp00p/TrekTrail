@@ -8,18 +8,12 @@ func has_crew(station): # check if station exists in crew
 			return true
 	return false
 	
-func combat(enemy_type, custom_message=""):
+func combat(enemy_type):
 	Globals.start_combat()
 	Globals.viewscreen_load("res://ShootingGame.tscn")
-	if custom_message == "":
-		return "Engaging the " + str(enemy_type)
-	else:
-		return custom_message.format(enemy_type)
+	return "Engaging the " + str(enemy_type)
 	
 func torpedos(enemy_type):
-	GlobalData.PATH_OFFSET -= rand_range(0.01, GlobalData.PATH_OFFSET)
-	Globals.load_map()
-	return
 	if GlobalData.TORPEDOS < 2:
 		combat(enemy_type)
 		return "You don't have enough torpedos! You'll have to engage the %s in close combat!" % enemy_type	
@@ -35,8 +29,8 @@ func lose_crew_member():
 	else:
 		return "You have no crew to lose! There's a silver lining in every dark nebula."
 
-func shield_loss():
-	var shield_loss = randi() % 30
+func shield_loss(val=30):
+	var shield_loss = randi() % val
 	if has_crew("Engineering"):
 		shield_loss = ceil(shield_loss/2)
 		GlobalData.SHIELDS -= shield_loss
