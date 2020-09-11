@@ -14,6 +14,7 @@ var can_shoot = true
 var cursor_image = preload("res://ShootingGame/cursor.png")
 var base_time = 1
 var damage_effect_timer = 0
+var hunting_ready = false
 
 func _ready():
 	randomize()
@@ -22,7 +23,7 @@ func _ready():
 	Input.set_custom_mouse_cursor(cursor_image,
 			Input.CURSOR_ARROW,
 			Vector2(32, 32))
-	scroll_speed = 1
+	scroll_speed = rand_range(0.1,0.5)
 	scroll_dir = scroll_dirs[randi()%scroll_dirs.size()]
 	
 	#
@@ -38,10 +39,18 @@ func _ready():
 
 
 func _process(delta):
-	if GlobalData.FUEL > 0:
-		shot_progress.value = 100 - (shot_timer.time_left/base_time*100)
+	
 	offset += scroll_dir
 	$SpaceBG.material.set_shader_param("x_offset", offset*scroll_speed)
+	
+	if !hunting_ready:
+		var tleft = floor($CountDown.time_left)
+		$CountdownLabel.text = "Get ready!\n"+str(tleft)
+		return
+	
+	if GlobalData.FUEL > 0:
+		shot_progress.value = 100 - (shot_timer.time_left/base_time*100)
+	
 	
 	if damage_effect_timer > 0:
 		# show an effect when you're hit
@@ -52,6 +61,9 @@ func _process(delta):
 
 
 func _input(event):
+	if !hunting_ready:
+		return
+		
 	# handle mouse clicking
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
@@ -72,6 +84,8 @@ func _input(event):
 
 
 func _on_ShipTimer_timeout():
+	if !hunting_ready:
+		return
 	spawn_enemy_ship()
 
 func spawn_enemy_ship():
@@ -121,3 +135,10 @@ func _on_GameTimer_timeout():
 			Input.CURSOR_ARROW,
 			Vector2(32, 32))
 	queue_free()
+
+func _on_CountDown_timeout():
+	$AnimationPlayer.play("game_ready")
+	yield($AnimationPlayer, "animation_finished")
+	$ShipTimer.start()
+	$GameTimer.start()
+	hunting_ready = true

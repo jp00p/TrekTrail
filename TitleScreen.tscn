@@ -40,31 +40,30 @@ shader_param/dissolve_amount = 1.0
 shader_param/emission_amount = null
 shader_param/dissolve_texture = SubResource( 2 )
 
-[sub_resource type="OpenSimplexNoise" id=8]
+[sub_resource type="OpenSimplexNoise" id=7]
 
-[sub_resource type="NoiseTexture" id=9]
+[sub_resource type="NoiseTexture" id=8]
 width = 1024
 height = 1024
-noise = SubResource( 8 )
+noise = SubResource( 7 )
 
-[sub_resource type="ShaderMaterial" id=10]
+[sub_resource type="ShaderMaterial" id=9]
 shader = ExtResource( 3 )
 shader_param/burn_color = Color( 1, 1, 1, 1 )
 shader_param/burn_size = null
 shader_param/dissolve_amount = 1.0
 shader_param/emission_amount = null
-shader_param/dissolve_texture = SubResource( 9 )
+shader_param/dissolve_texture = SubResource( 8 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=10]
 size = 64
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="Theme" id=12]
-default_font = SubResource( 11 )
+[sub_resource type="Theme" id=11]
+default_font = SubResource( 10 )
 
-[sub_resource type="Animation" id=7]
-resource_name = "dissolve"
+[sub_resource type="Animation" id=12]
 length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title1:material:shader_param/dissolve_amount")
@@ -155,7 +154,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 4.5 )
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=13]
 resource_name = "dissolve_start"
 length = 2.0
 tracks/0/type = "value"
@@ -219,42 +218,42 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="StyleBoxFlat" id=14]
 content_margin_left = 20.0
 bg_color = Color( 0.533333, 0.133333, 0.0666667, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id=21]
+[sub_resource type="StyleBoxFlat" id=15]
 content_margin_left = 20.0
 bg_color = Color( 0.733333, 0.266667, 0.0666667, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id=22]
+[sub_resource type="StyleBoxFlat" id=16]
 content_margin_left = 20.0
 bg_color = Color( 0.603922, 0.603922, 0.603922, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxFlat" id=17]
 content_margin_right = 20.0
 bg_color = Color( 0.466667, 0.266667, 0.4, 1 )
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id=24]
+[sub_resource type="StyleBoxFlat" id=18]
 content_margin_right = 20.0
 bg_color = Color( 0.6, 0.466667, 0.666667, 1 )
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id=25]
+[sub_resource type="StyleBoxFlat" id=19]
 content_margin_right = 20.0
 bg_color = Color( 0.603922, 0.603922, 0.603922, 1 )
 corner_radius_top_right = 60
@@ -300,12 +299,12 @@ __meta__ = {
 }
 
 [node name="Subtitle" type="Label" parent="."]
-material = SubResource( 10 )
+material = SubResource( 9 )
 margin_left = 187.288
 margin_top = 356.597
 margin_right = 804.288
 margin_bottom = 423.597
-theme = SubResource( 12 )
+theme = SubResource( 11 )
 text = "Escape from Pacifica"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -313,8 +312,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "dissolve"
-anims/dissolve = SubResource( 7 )
-anims/dissolve_start = SubResource( 19 )
+anims/dissolve = SubResource( 12 )
+anims/dissolve_start = SubResource( 13 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -335,12 +334,11 @@ __meta__ = {
 [node name="StartGame" parent="HBoxContainer" instance=ExtResource( 4 )]
 margin_left = 2.0
 margin_right = 132.0
-margin_bottom = 39.0
-custom_styles/hover = SubResource( 20 )
-custom_styles/pressed = SubResource( 21 )
-custom_styles/focus = SubResource( 20 )
-custom_styles/disabled = SubResource( 22 )
-custom_styles/normal = SubResource( 21 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 15 )
 text = "Start Game"
 align = 0
 color = 3
@@ -349,12 +347,11 @@ side = 1
 [node name="ViewScores" parent="HBoxContainer" instance=ExtResource( 4 )]
 margin_left = 132.0
 margin_right = 262.0
-margin_bottom = 39.0
-custom_styles/hover = SubResource( 23 )
-custom_styles/pressed = SubResource( 24 )
-custom_styles/focus = SubResource( 23 )
-custom_styles/disabled = SubResource( 25 )
-custom_styles/normal = SubResource( 24 )
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 17 )
+custom_styles/disabled = SubResource( 19 )
+custom_styles/normal = SubResource( 18 )
 text = "View Scores"
 color = 2
 

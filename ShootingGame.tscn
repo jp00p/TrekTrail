@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ShootingGame.gd" type="Script" id=1]
 [ext_resource path="res://Shaders/CRT.shader" type="Shader" id=2]
 [ext_resource path="res://GUIElements/SpaceBG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Fonts/TNG_Title.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Shaders/dissolve.shader" type="Shader" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.247059, 0.054902, 0.054902, 1 )
@@ -33,6 +35,44 @@ shader_param/aberration_amount = 0.0
 shader_param/move_aberration = true
 shader_param/aberration_speed = 3.0
 
+[sub_resource type="OpenSimplexNoise" id=7]
+
+[sub_resource type="NoiseTexture" id=8]
+width = 1024
+height = 1024
+noise = SubResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 5 )
+shader_param/burn_color = Color( 1, 1, 1, 1 )
+shader_param/burn_size = null
+shader_param/dissolve_amount = 0.0
+shader_param/emission_amount = null
+shader_param/dissolve_texture = SubResource( 8 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 34
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "game_ready"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CountdownLabel:material:shader_param/dissolve_amount")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
 [node name="ShootingGame" type="Control"]
 light_mask = 2
 margin_right = 320.0
@@ -47,6 +87,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CountDown" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
 [node name="SpaceBG" parent="." instance=ExtResource( 3 )]
 
 [node name="Enemies" type="Control" parent="."]
@@ -57,11 +102,9 @@ __meta__ = {
 }
 
 [node name="ShipTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 15.0
-autostart = true
 
 [node name="ShotTimer" type="Timer" parent="."]
 
@@ -102,6 +145,23 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CountdownLabel" type="Label" parent="."]
+material = SubResource( 9 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 6 )
+text = "Get ready!
+3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/game_ready = SubResource( 10 )
+[connection signal="timeout" from="CountDown" to="." method="_on_CountDown_timeout"]
 [connection signal="timeout" from="ShipTimer" to="." method="_on_ShipTimer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]

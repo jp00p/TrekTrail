@@ -29,6 +29,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=4]
 content_margin_right = 20.0
@@ -38,6 +39,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=5]
 content_margin_right = 20.0
@@ -47,6 +49,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=6]
 content_margin_right = 20.0
@@ -56,6 +59,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=7]
 content_margin_right = 20.0
@@ -65,6 +69,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=8]
 content_margin_right = 20.0
@@ -74,6 +79,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=9]
 content_margin_right = 20.0
@@ -83,6 +89,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=10]
 content_margin_right = 20.0
@@ -92,6 +99,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=11]
 content_margin_right = 20.0
@@ -101,6 +109,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=12]
 content_margin_right = 20.0
@@ -110,6 +119,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=13]
 content_margin_right = 20.0
@@ -119,6 +129,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=14]
 content_margin_right = 20.0
@@ -128,6 +139,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=15]
 content_margin_right = 20.0
@@ -137,6 +149,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=16]
 content_margin_right = 20.0
@@ -146,6 +159,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=17]
 content_margin_right = 20.0
@@ -155,6 +169,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [node name="CharacterCreation" type="Node2D"]
 script = ExtResource( 2 )

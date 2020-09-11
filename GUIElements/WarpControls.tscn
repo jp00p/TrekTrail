@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Buttons/LCARSButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUIElements/WarpControls.gd" type="Script" id=2]
+[ext_resource path="res://GUIElements/warp_buttongroup.tres" type="ButtonGroup" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_right = 20.0
@@ -239,6 +240,8 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 1 )
 custom_styles/disabled = SubResource( 3 )
 custom_styles/normal = SubResource( 2 )
+toggle_mode = true
+group = ExtResource( 3 )
 text = "WARP 1"
 color = 5
 
@@ -251,6 +254,8 @@ custom_styles/pressed = SubResource( 5 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 6 )
 custom_styles/normal = SubResource( 5 )
+toggle_mode = true
+group = ExtResource( 3 )
 text = "WARP 2"
 align = 0
 color = 5
@@ -264,6 +269,8 @@ custom_styles/pressed = SubResource( 8 )
 custom_styles/focus = SubResource( 7 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 8 )
+toggle_mode = true
+group = ExtResource( 3 )
 text = "WARP 3"
 color = 1
 
@@ -277,6 +284,8 @@ custom_styles/pressed = SubResource( 11 )
 custom_styles/focus = SubResource( 10 )
 custom_styles/disabled = SubResource( 12 )
 custom_styles/normal = SubResource( 11 )
+toggle_mode = true
+group = ExtResource( 3 )
 text = "WARP 4"
 align = 0
 color = 1
@@ -290,6 +299,8 @@ custom_styles/pressed = SubResource( 14 )
 custom_styles/focus = SubResource( 13 )
 custom_styles/disabled = SubResource( 15 )
 custom_styles/normal = SubResource( 14 )
+toggle_mode = true
+group = ExtResource( 3 )
 text = "WARP 5"
 color = 4
 
@@ -303,6 +314,8 @@ custom_styles/pressed = SubResource( 17 )
 custom_styles/focus = SubResource( 16 )
 custom_styles/disabled = SubResource( 18 )
 custom_styles/normal = SubResource( 17 )
+toggle_mode = true
+group = ExtResource( 3 )
 text = "WARP 6"
 align = 0
 color = 4
@@ -316,6 +329,8 @@ custom_styles/pressed = SubResource( 20 )
 custom_styles/focus = SubResource( 19 )
 custom_styles/disabled = SubResource( 21 )
 custom_styles/normal = SubResource( 20 )
+toggle_mode = true
+group = ExtResource( 3 )
 text = "WARP 7"
 
 [node name="Warp8" parent="GridContainer" instance=ExtResource( 1 )]
@@ -328,6 +343,8 @@ custom_styles/pressed = SubResource( 23 )
 custom_styles/focus = SubResource( 22 )
 custom_styles/disabled = SubResource( 24 )
 custom_styles/normal = SubResource( 23 )
+toggle_mode = true
+group = ExtResource( 3 )
 text = "WARP 8"
 align = 0
 side = 1
@@ -340,6 +357,8 @@ custom_styles/pressed = SubResource( 26 )
 custom_styles/focus = SubResource( 25 )
 custom_styles/disabled = SubResource( 27 )
 custom_styles/normal = SubResource( 26 )
+toggle_mode = true
+group = ExtResource( 3 )
 text = "WARP 9"
 color = 3
 

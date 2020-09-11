@@ -10,5 +10,29 @@
     "choice_2_result_text": "Result 2!",
     "graphic": "lastoutpostferengi.jpg",
     "other_notes": ""
+  },
+  {
+    "title": "Big Blue Nebula",
+    "text": "A huge blue nebula is in your path.  Sensors detect no ferrymen.",
+    "choice_1_text": "Go Through",
+    "choice_1_result": ["shield_loss_minor"],
+    "choice_1_result_text": "You cross through the nebula with some minor damage to your shields.",
+    "choice_2_text": "Go Around",
+    "choice_2_result": ["time_loss_minor"],
+    "choice_2_result_text": "You take the long way around, forever wondering what was in the nebula.",
+    "graphic": "blue_nebula.jpg",
+    "other_notes": ""
+  },
+  {
+    "title": "Sample Event",
+    "text": "Just testing!",
+    "choice_1_text": "Distance Loss",
+    "choice_1_result": ["distance_loss_minor"],
+    "choice_1_result_text": "Distance loss minor test",
+    "choice_2_text": "Shield Gain",
+    "choice_2_result": ["shield_gain_minor"],
+    "choice_2_result_text": "Shield gain minor test",
+    "graphic": "brainwash.jpg",
+    "other_notes": ""
   }
 ]

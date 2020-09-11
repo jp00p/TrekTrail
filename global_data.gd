@@ -73,7 +73,7 @@ var DISEASES = {
 }
 
 # CONFERENCE & CREW VARS
-var CONFERENCE
+var CONFERENCE = ""
 var CREW = []
 
 # TIME VARS
@@ -83,8 +83,9 @@ var TIME_OF_DAY = 1
 var TIME_PER_DAY = 24
 
 # PATH VARS
-var PATH_OFFSET = 0
+var PATH_OFFSET = 0 setget set_path_offset
 var PATH_LENGTH = 0
+var SPEED_FACTOR = 0.0015
 
 # SHIP VARS
 
@@ -107,11 +108,11 @@ var MAX_SHIELDS = 100
 var SHIELDS = 100 setget set_shields
 
 var RATIONS = RATION_LEVELS.NORMAL
-var DESTINATION = 10000
+var DESTINATION = 1000000
 var DISTANCE_TRAVELLED = 0 setget set_distance
 
 var REPAIR_COST = 100
-var REPAIR_COST_MOD = 100
+var REPAIR_TIME = 1
 
 var ENGINE_EFFICIENCY = 1 setget set_efficiency
 var WARP_SPEED = 1 setget set_warp
@@ -136,10 +137,12 @@ var END_OF_GAME_OFFSET = 1
 var SECTOR_NAMES = ["Taurus Reach", "Neutral Zone", "Fluidic Space"]
 var SECTOR_NAME = SECTOR_NAMES[0]
 
+# holds which colors the clouds should be now
 var CUR_SECTOR_COLOR1 = Color(0, 0, 0, 0)
 var CUR_SECTOR_COLOR2 = Color(0, 0, 0, 0)
 
 var SECTOR_COLORS = [
+	# colors of the clouds per sector (plus a bonus one)
 	[Color(0, 0.17, 0.16, 1), Color(0, 0.48, 0.69, 1)],
 	[Color(0.02, 0.22, 0.06, 1), Color(0.14, 0, 0.33, 1)],
 	[Color(0.22, 0.02, 0.04, 1), Color(0.31, 0, 0.5, 1)],
@@ -148,7 +151,7 @@ var SECTOR_COLORS = [
 
 
 # EVENT VARS
-var MAJOR_EVENT_CHANCE = 15
+var MAJOR_EVENT_CHANCE = 0
 var MINOR_EVENT_CHANCE = 5
 
 #
@@ -158,8 +161,11 @@ func set_fuel(val):
 	FUEL = max(floor(val), 0)
 	calc_ship_resources()
 
+func set_path_offset(val):
+	PATH_OFFSET = clamp(val,0,1)
+
 func set_distance(val):
-	DISTANCE_TRAVELLED = min(floor(val), DESTINATION)
+	DISTANCE_TRAVELLED = clamp(floor(val), 0, DESTINATION)
 	set_sector()
 
 func set_efficiency(val):
@@ -174,17 +180,24 @@ func calc_ship_resources():
 	SPEED = calc_speed()
 
 func calc_fuel_use():
+	#calculate how much fuel is being used per tick
 	return int(ceil(
-		(WARP_SPEED) * (RATIONS * CREW.size()) / ENGINE_EFFICIENCY )
+		(WARP_SPEED) * (RATIONS * max(CREW.size(),1)) / ENGINE_EFFICIENCY )
 	)
 
 func calc_speed():
+	# calculate the current speed
 	if SHIP_STATE != SHIP_STATES.SHIP_MOVING:
 		return 0
+	print(str(
+		(WARP_SPEED) * 		# 1-9
+		(1+CREW.size()) *  	# 1-5
+		(ENGINE_EFFICIENCY) # 0-1
+	))
 	return (
-		(WARP_SPEED) * 
-		(5+CREW.size()) * 
-		(ENGINE_EFFICIENCY)
+		(WARP_SPEED) * 		# 1-9
+		(1+CREW.size()) *  	# 1-5
+		(ENGINE_EFFICIENCY) # 0-1
 	)
 
 func set_shields(val):
@@ -197,14 +210,17 @@ func set_ex_cooldown(val):
 
 func set_time(val):
 	# after 24 hours passes set a new day
-	TIME = val
-	TIME_OF_DAY += 1
+	var abs_amt = (val - TIME) # get the absoute amt we're incrementing time
+	TIME_OF_DAY += abs_amt # increment the time of day
+	TIME = val # set new time
 	if TIME_OF_DAY >= TIME_PER_DAY:
+		# clock strikes midnight
 		DAYS_PASSED += 1
 		TIME_OF_DAY = 1
 	
 func set_sector():
-	var po = stepify(PATH_OFFSET, 0.01)
+	var po = stepify(PATH_OFFSET, 0.01) # get the path offset by hundredths
+	# set the current sector based on path offsets
 	if po < SECTORS[1]:
 		CURRENT_SECTOR = 0
 	if po >= SECTORS[1] and po < SECTORS[2]:

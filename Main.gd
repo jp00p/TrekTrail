@@ -61,7 +61,7 @@ func ship_movement():
 		GlobalData.ENGINE_WEAR_MOD = 1
 		
 	GlobalData.FUEL -= GlobalData.FUEL_USE
-	GlobalData.DISTANCE_TRAVELLED += GlobalData.SPEED
+	GlobalData.DISTANCE_TRAVELLED = GlobalData.PATH_OFFSET*1000000
 	GlobalData.ENGINE_EFFICIENCY -= (GlobalData.ENGINE_WEAR*GlobalData.ENGINE_WEAR_MOD)
 	GlobalData.EXPLORATION_COOLDOWN -= 1
 	roll_movement_event()

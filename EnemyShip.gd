@@ -11,8 +11,8 @@ var spawn_y = rand_range(15,200) # range where it can spawn on the y axis
 var dead = false
 var target = Vector2()
 
-export(int) var freq = 5 # sinusoidal!
-export(int) var amp = 333
+export(int) var freq = 0 # sinusoidal!
+export(int) var amp = 0
 var time = 0.0
 
 export(int) var max_hp = 1 # how many shots to kill
