@@ -224,6 +224,7 @@ bg_color = Color( 0.533333, 0.133333, 0.0666667, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=15]
 content_margin_left = 20.0
@@ -231,6 +232,7 @@ bg_color = Color( 0.733333, 0.266667, 0.0666667, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=16]
 content_margin_left = 20.0
@@ -238,6 +240,7 @@ bg_color = Color( 0.603922, 0.603922, 0.603922, 1 )
 corner_radius_top_left = 60
 corner_radius_bottom_left = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=17]
 content_margin_right = 20.0
@@ -245,6 +248,7 @@ bg_color = Color( 0.466667, 0.266667, 0.4, 1 )
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=18]
 content_margin_right = 20.0
@@ -252,6 +256,7 @@ bg_color = Color( 0.6, 0.466667, 0.666667, 1 )
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_detail = 20
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=19]
 content_margin_right = 20.0
@@ -259,6 +264,7 @@ bg_color = Color( 0.603922, 0.603922, 0.603922, 1 )
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 corner_detail = 20
+anti_aliasing = false
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0

@@ -1,0 +1,251 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Fonts/swiss-911-ultra-compressed-bt.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://GUIGraphics/map-tracker.png" type="Texture" id=2]
+[ext_resource path="res://GUIGraphics/loading-small.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 0.6, 0, 1 )
+corner_radius_top_left = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 0.6, 0, 1 )
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 22
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="StatusContainer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -799.0
+rect_min_size = Vector2( 225, 300 )
+theme = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="MainMargin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusItems" type="VBoxContainer" parent="MainMargin"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 219.0
+margin_bottom = 592.0
+custom_constants/separation = 32
+
+[node name="Shields" type="HBoxContainer" parent="MainMargin/StatusItems"]
+margin_right = 211.0
+margin_bottom = 28.0
+custom_constants/separation = 6
+
+[node name="Label" type="Label" parent="MainMargin/StatusItems/Shields"]
+margin_top = 1.0
+margin_right = 37.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 3 )
+text = "Shields"
+
+[node name="ColorRect" type="Panel" parent="MainMargin/StatusItems/Shields"]
+margin_left = 43.0
+margin_right = 55.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 12, 0 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="ShieldsAmt" type="Label" parent="MainMargin/StatusItems/Shields"]
+margin_left = 61.0
+margin_top = -1.0
+margin_right = 85.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 24, 28 )
+custom_fonts/font = SubResource( 5 )
+text = "100"
+align = 2
+uppercase = true
+
+[node name="ProgressBar" type="ProgressBar" parent="MainMargin/StatusItems/Shields"]
+margin_left = 91.0
+margin_right = 211.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 0 )
+step = 1.0
+value = 100.0
+
+[node name="Torpedos" type="HBoxContainer" parent="MainMargin/StatusItems"]
+margin_top = 60.0
+margin_right = 211.0
+margin_bottom = 86.0
+custom_constants/separation = 12
+
+[node name="Label2" type="Label" parent="MainMargin/StatusItems/Torpedos"]
+margin_right = 48.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 3 )
+text = "Torpedos"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMargin/StatusItems/Torpedos"]
+margin_left = 60.0
+margin_right = 211.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MainMargin/StatusItems/Torpedos/HBoxContainer"]
+margin_right = 27.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 27, 16 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="MainMargin/StatusItems/Torpedos/HBoxContainer"]
+margin_left = 31.0
+margin_right = 58.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 27, 16 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect3" type="TextureRect" parent="MainMargin/StatusItems/Torpedos/HBoxContainer"]
+margin_left = 62.0
+margin_right = 89.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 27, 16 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect4" type="TextureRect" parent="MainMargin/StatusItems/Torpedos/HBoxContainer"]
+margin_left = 93.0
+margin_right = 120.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 27, 16 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect5" type="TextureRect" parent="MainMargin/StatusItems/Torpedos/HBoxContainer"]
+margin_left = 124.0
+margin_right = 151.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 27, 16 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Energy" type="HBoxContainer" parent="MainMargin/StatusItems"]
+margin_top = 118.0
+margin_right = 211.0
+margin_bottom = 288.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MainMargin/StatusItems/Energy"]
+margin_right = 141.0
+margin_bottom = 170.0
+
+[node name="Label3" type="Label" parent="MainMargin/StatusItems/Energy/HBoxContainer"]
+margin_right = 141.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 3 )
+text = "Energy"
+align = 1
+
+[node name="TextureProgress" type="TextureProgress" parent="MainMargin/StatusItems/Energy/HBoxContainer"]
+margin_top = 30.0
+margin_right = 141.0
+margin_bottom = 170.0
+size_flags_horizontal = 4
+max_value = 100.0
+step = 1.0
+value = 100.0
+texture_progress = ExtResource( 3 )
+fill_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMargin/StatusItems/Energy/HBoxContainer/TextureProgress"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="MainMargin/StatusItems/Energy/HBoxContainer/TextureProgress/CenterContainer"]
+margin_left = 56.0
+margin_top = 57.0
+margin_right = 84.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 9 )
+text = "1000"
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMargin/StatusItems/Energy"]
+margin_left = 145.0
+margin_right = 189.0
+margin_bottom = 170.0
+
+[node name="Label4" type="Label" parent="MainMargin/StatusItems/Energy/VBoxContainer"]
+margin_right = 44.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 3 )
+text = "Fuel Use"
+align = 1
+
+[node name="TextureProgress" type="TextureProgress" parent="MainMargin/StatusItems/Energy/VBoxContainer"]
+margin_top = 30.0
+margin_right = 44.0
+margin_bottom = 31.0
+fill_mode = 3

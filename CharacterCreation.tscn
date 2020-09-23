@@ -192,21 +192,22 @@ margin_bottom = 600.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer"]
 margin_left = 130.0
-margin_top = 52.0
+margin_top = 21.0
 margin_right = 893.0
-margin_bottom = 547.0
+margin_bottom = 579.0
+custom_constants/separation = 25
 
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
 margin_right = 763.0
 margin_bottom = 45.0
 text = "Choose a conference to escape from:
-The knowledge you gained at the conference will help you in your journey."
+The knowledge you gain at the conference will help you in your journey."
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 49.0
+margin_top = 70.0
 margin_right = 763.0
-margin_bottom = 266.0
+margin_bottom = 287.0
 custom_constants/separation = 41
 
 [node name="ShieldsContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
@@ -365,9 +366,9 @@ side = 2
 
 [node name="CrewContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer"]
 margin_left = 177.0
-margin_top = 270.0
+margin_top = 312.0
 margin_right = 585.0
-margin_bottom = 455.0
+margin_bottom = 497.0
 size_flags_horizontal = 4
 alignment = 1
 
@@ -453,9 +454,9 @@ margin_bottom = 160.0
 
 [node name="Submit" parent="CanvasLayer/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 8 )]
 margin_left = 291.0
-margin_top = 459.0
+margin_top = 522.0
 margin_right = 471.0
-margin_bottom = 495.0
+margin_bottom = 558.0
 rect_min_size = Vector2( 180, 36 )
 size_flags_horizontal = 4
 custom_styles/hover = SubResource( 15 )
